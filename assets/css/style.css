@@ -1,0 +1,27 @@
+/* FIGURE OUT THE FONT FOR ALL TEXT*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    
+}
+
+h2 {
+    text-align: center;
+    padding: 50px 0px 10px 0px;
+    font-size: 40px;
+}
+
+p {
+    text-align: center;
+    font-size: 20px;
+     
+}
