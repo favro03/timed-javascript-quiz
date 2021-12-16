@@ -188,7 +188,7 @@ btnQ4Answer4.addEventListener('click', function(){
     correctAnswer = true;
     question4();
 });
-//START HERE FIXING THE WRONG/CORRECT
+
 var question4 = function(){
     if (correctAnswer === true){
         question4El.style.display ='none';
@@ -209,6 +209,43 @@ var question4 = function(){
     }
 correctAnswer = false;
 };
+
+//question 5
+btnQ5Answer1.addEventListener('click', function(){
+    question5();
+});
+btnQ5Answer2.addEventListener('click', function(){ 
+    question5();
+});
+btnQ5Answer3.addEventListener('click', function(){
+    question5();
+});
+btnQ5Answer4.addEventListener('click', function(){
+    correctAnswer = true;
+    question5();
+});
+
+var question5 = function(){
+    if (correctAnswer === true){
+        question5El.style.display ='none';
+        doneEl.style.display = 'block';
+        correct4El.style.display = 'none';
+        wrong4El.style.display = 'none';
+        correct5El.style.display = 'block';
+        
+       
+    }
+    else {
+        question5El.style.display ='none';
+        doneEl.style.display = 'block';
+        wrong4El.style.display = 'none';
+        correct4El.style.display = 'none';
+        wrong5El.style.display = 'block';
+       
+    }
+correctAnswer = false;
+};
+
 
 
 
