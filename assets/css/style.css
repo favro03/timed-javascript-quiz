@@ -27,6 +27,14 @@ p {
 }
 button {
     position: relative;
-    top:220px; left: 690px;
+    top:50px; left: 660px;
     
+}
+#btnAnswer1, #btnAnswer2, #btnAnswer3, #btnAnswer4 {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.question {
+    display: none;
 }
