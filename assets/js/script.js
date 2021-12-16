@@ -1,5 +1,7 @@
 var body = document.body;
 var infoEl = document.querySelector("#intro");
+
+
 var question1El = document.querySelector("#question1");
 var question2El = document.querySelector("#question2");
 var question3El = document.querySelector("#question3");
@@ -9,7 +11,9 @@ var question5El = document.querySelector('#question5');
 var doneEl = document.querySelector("#done");
 
 var startQuiz = document.querySelector('#start-quiz');
-var countEl = document.querySelector('#time');
+var timerEl = document.getElementById('time');
+var finalScoreEl = document.getElementById('final-score');
+
 
 var btnQ1Answer1=document.querySelector('#btnQ1Answer1');
 var btnQ1Answer2=document.querySelector('#btnQ1Answer2');
@@ -54,37 +58,41 @@ var wrong5El = document.querySelector('#wrong5');
 var correctAnswer=false;
 
 
-var setCounterText =function(){
-    countEl.textContent = count;
-};
-var counter = function(){
-//create a count down function?  or this be a for loop or while loop??? need to think about this
-};
 
-startQuiz.addEventListener('click', function(){
-    count =75;
-    setCounterText();
-    infoEl.style.display = 'none';
-    question1El.style.display='block';
-   
+var countdown = function(){
+    var count =40;
+    startQuiz.addEventListener('click', function(){
+        var counter = setInterval(function(){
+            if (count > 0){
+                timerEl.textContent = 'Time: ' + count;
+                count --;
+            }
+            else if (count <= 0){
+                end();
+            }
+        }, 1000);
 
-    //if #btnQ1Answer3 clicked (event listner hide question1EL and display Question 2 and #correct1)
-});
+        infoEl.style.display = 'none';
+        question1El.style.display='block';
+    });
 //question1
+};
 
-btnQ1Answer1.addEventListener('click', function(){
-    question1();
-});
-btnQ1Answer2.addEventListener('click', function(){ 
-    question1();
-});
-btnQ1Answer3.addEventListener('click', function(){
-    correctAnswer = true;
-    question1();
-});
-btnQ1Answer4.addEventListener('click', function(){
-    question1();
-});
+var q1 = function(){
+    btnQ1Answer1.addEventListener('click', function(){
+        question1();
+    });
+    btnQ1Answer2.addEventListener('click', function(){ 
+        question1();
+    });
+    btnQ1Answer3.addEventListener('click', function(){
+        correctAnswer = true;
+        question1();
+    });
+    btnQ1Answer4.addEventListener('click', function(){
+        question1();
+    });
+};
 
 var question1 = function(){
     if (correctAnswer === true){
@@ -96,26 +104,26 @@ var question1 = function(){
         question1El.style.display ='none';
         question2El.style.display ='block';
         wrong1El.style.display = 'block';
-       
+        count =- 10; 
     }
 correctAnswer=false;
 };
 //Question2
-
-btnQ2Answer1.addEventListener('click', function(){
-    question2();
-});
-btnQ2Answer2.addEventListener('click', function(){ 
-    question2();
-});
-btnQ2Answer3.addEventListener('click', function(){
-    correctAnswer = true;
-    question2();
-});
-btnQ2Answer4.addEventListener('click', function(){
-    question2();
-});
-
+var q2 = function(){
+    btnQ2Answer1.addEventListener('click', function(){
+        question2();
+    });
+    btnQ2Answer2.addEventListener('click', function(){ 
+        question2();
+    });
+    btnQ2Answer3.addEventListener('click', function(){
+        correctAnswer = true;
+        question2();
+    });
+    btnQ2Answer4.addEventListener('click', function(){
+        question2();
+    });
+};
 var question2 = function(){
     if (correctAnswer === true){
         question2El.style.display ='none';
@@ -123,35 +131,35 @@ var question2 = function(){
         correct1El.style.display = 'none';
         wrong1El.style.display = 'none';
         correct2El.style.display = 'block';
-        
-       
     }
     else {
         question2El.style.display ='none';
         question3El.style.display = 'block';
         wrong1El.style.display = 'none';
         correct1El.style.display = 'none';
-        wrong2El.style.display = 'block';
-       
+        wrong2El.style.display = 'block';  
+        count =- 10; 
     }
 correctAnswer = false;
 };
 
 //question 3
-btnQ3Answer1.addEventListener('click', function(){
-    question3();
-});
-btnQ3Answer2.addEventListener('click', function(){ 
-    question3();
-});
-btnQ3Answer3.addEventListener('click', function(){
-    
-    question3();
-});
-btnQ3Answer4.addEventListener('click', function(){
-    correctAnswer = true;
-    question3();
-});
+var q3 = function(){
+    btnQ3Answer1.addEventListener('click', function(){
+        question3();
+    });
+    btnQ3Answer2.addEventListener('click', function(){ 
+        question3();
+    });
+    btnQ3Answer3.addEventListener('click', function(){
+        
+        question3();
+    });
+    btnQ3Answer4.addEventListener('click', function(){
+        correctAnswer = true;
+        question3();
+    });
+};
 
 var question3 = function(){
     if (correctAnswer === true){
@@ -160,8 +168,6 @@ var question3 = function(){
         correct2El.style.display = 'none';
         wrong2El.style.display = 'none';
         correct3El.style.display = 'block';
-        
-       
     }
     else {
         question3El.style.display ='none';
@@ -169,26 +175,27 @@ var question3 = function(){
         wrong2El.style.display = 'none';
         correct2El.style.display = 'none';
         wrong3El.style.display = 'block';
-       
+        count =- 10;
     }
 correctAnswer = false;
 };
 
 //question 4
-btnQ4Answer1.addEventListener('click', function(){
-    question4();
-});
-btnQ4Answer2.addEventListener('click', function(){ 
-    question4();
-});
-btnQ4Answer3.addEventListener('click', function(){
-    question4();
-});
-btnQ4Answer4.addEventListener('click', function(){
-    correctAnswer = true;
-    question4();
-});
-
+var q4 = function(){
+    btnQ4Answer1.addEventListener('click', function(){
+        question4();
+    });
+    btnQ4Answer2.addEventListener('click', function(){ 
+        question4();
+    });
+    btnQ4Answer3.addEventListener('click', function(){
+        question4();
+    });
+    btnQ4Answer4.addEventListener('click', function(){
+        correctAnswer = true;
+        question4();
+    });
+};
 var question4 = function(){
     if (correctAnswer === true){
         question4El.style.display ='none';
@@ -196,8 +203,6 @@ var question4 = function(){
         correct3El.style.display = 'none';
         wrong3El.style.display = 'none';
         correct4El.style.display = 'block';
-        
-       
     }
     else {
         question4El.style.display ='none';
@@ -205,26 +210,27 @@ var question4 = function(){
         wrong3El.style.display = 'none';
         correct3El.style.display = 'none';
         wrong4El.style.display = 'block';
-       
+        count =- 10;
     }
 correctAnswer = false;
 };
 
 //question 5
-btnQ5Answer1.addEventListener('click', function(){
-    question5();
-});
-btnQ5Answer2.addEventListener('click', function(){ 
-    question5();
-});
-btnQ5Answer3.addEventListener('click', function(){
-    question5();
-});
-btnQ5Answer4.addEventListener('click', function(){
-    correctAnswer = true;
-    question5();
-});
-
+var q5 = function(){
+    btnQ5Answer1.addEventListener('click', function(){
+        question5();
+    });
+    btnQ5Answer2.addEventListener('click', function(){ 
+        question5();
+    });
+    btnQ5Answer3.addEventListener('click', function(){
+        question5();
+    });
+    btnQ5Answer4.addEventListener('click', function(){
+        correctAnswer = true;
+        question5();
+    });
+}
 var question5 = function(){
     if (correctAnswer === true){
         question5El.style.display ='none';
@@ -232,8 +238,6 @@ var question5 = function(){
         correct4El.style.display = 'none';
         wrong4El.style.display = 'none';
         correct5El.style.display = 'block';
-        
-       
     }
     else {
         question5El.style.display ='none';
@@ -241,9 +245,19 @@ var question5 = function(){
         wrong4El.style.display = 'none';
         correct4El.style.display = 'none';
         wrong5El.style.display = 'block';
-       
+        count =- 10;
+        //add local storage or function for local storage
+        //add function for data input if its not initials
     }
 correctAnswer = false;
+};
+
+var end = function(){
+    doneEl.style.display = 'block';
+    finalScoreEl.textContent = 'Your final score is' + count;
+    //Need to get the p element + count
+    //add local storage or function for local storage
+    //add function for data input if its not initials
 };
 
 
@@ -274,3 +288,9 @@ correctAnswer = false;
 
 //WHEN the game is over
 //THEN I can save my initials and score
+countdown();
+q1();
+q2();
+q3();
+q4();
+q5();
