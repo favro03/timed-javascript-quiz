@@ -1,63 +1,240 @@
 var body = document.body;
+var questionEl = document.getElementById('question');
+var answer1El = document.getElementById('btnAnswer1');
+var answer2El = document.getElementById('btnAnswer2');
+var answer3El = document.getElementById('btnAnswer3');
+var answer4El = document.getElementById('btnAnswer4');
+var correctEl = document.getElementById('correct');
+var wrongEl = document.getElementById('wrong');
+var finalScoreEl = document.getElementById('final-score');
+var initialsEl = document.getElementById('initials');
+var formEl = document.getElementById('form');
+var submitEl = document.getElementById('end');
+var btnEl = document.getElementsByClassName('btn');
 var infoEl = document.querySelector("#intro");
+var startQuizEl = document.querySelector('#start-quiz');
+var timerEl = document.getElementById('time');
+var correctAnswer = "";
+var timeLeft = 0;
+
+startQuizEl.addEventListener('click', function(){
+    infoEl.style.display = 'none';
+    timer();
+    question1();  
+});
+
+var question1 = function() {
+    questionEl.textContent = 'Commonly used data types DO not Include:';
+    answer1El.textContent = '1. strings';
+    answer2El.textContent = '2. booleans';
+    answer3El.textContent = '3. alerts';
+    answer4El.textContent = '4. numbers';
+
+    answer1El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question2();
+    });
+    answer2El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question2();
+    });
+    answer3El.addEventListener('click', function(){
+        correctAnswer = true;
+        question2();
+    });
+    answer4El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question2();
+    });
+
+    
+};
+
+var question2 = function() {
+    questionEl.textContent = 'The condition in an if/else statement is enclosed ________________.';
+    answer1El.textContent = '1. quotes';
+    answer2El.textContent = '2. curly brackets';
+    answer3El.textContent = '3. parenthesis';
+    answer4El.textContent = '4. square brackets';
+    answerResponse();
+    
+    answer1El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question3();
+    });
+    answer2El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question3();
+    });
+    answer3El.addEventListener('click', function(){
+        correctAnswer = true;
+        question3();
+    });
+    answer4El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question3();
+    });
+};
+
+var question3 = function() {
+    questionEl.textContent = 'Arrays in JavaScript can be used to store ________________.';
+    answer1El.textContent = '1. numbers and strings';
+    answer2El.textContent = '2. other arrays';
+    answer3El.textContent = '3. booleans';
+    answer4El.textContent = '4. all of the above';
+    answerResponse();
+    
+    answer1El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question4();
+    });
+    answer2El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question4();
+    });
+    answer3El.addEventListener('click', function(){
+        correctAnswer = false;
+        question4();
+    });
+    answer4El.addEventListener('click', function(){
+        correctAnswer = true;
+        timeLeft = timeLeft - 10;
+        question4();
+    });
+    
+};
+
+var question4 = function() {
+    questionEl.textContent = 'String values must be enclosed within _______ when being assigned to variables.';
+    answer1El.textContent = '1. commas';
+    answer2El.textContent = '2. curly brackets';
+    answer3El.textContent = '3. quotes';
+    answer4El.textContent = '4. parenthesis';
+    answerResponse();
+    
+    answer1El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question5();
+    });
+    answer2El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question5();
+    });
+    answer3El.addEventListener('click', function(){
+        correctAnswer = true;
+        question5();
+    });
+    answer4El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        question5();
+    });
+};
+
+var question5 = function() {
+    questionEl.textContent = 'A very useful tool used during development and debugging for printing content to the debugger is:';
+    answer1El.textContent = '1. JavaScript';
+    answer2El.textContent = '2. terminal/bash';
+    answer3El.textContent = '3. for loops';
+    answer4El.textContent = '4. console.log';
+    answerResponse();
+    
+    answer1El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        end();
+    });
+    answer2El.addEventListener('click', function(){
+        correctAnswer = false;
+        timeLeft = timeLeft - 10;
+        end();
+    });
+    answer3El.addEventListener('click', function(){
+        correctAnswer = false;
+        end();
+    });
+    answer4El.addEventListener('click', function(){
+        correctAnswer = true;
+        timeLeft = timeLeft - 10;
+        end();
+    });
+};
+
+var timer = function(){
+    var timeLeft = 75;
+
+    var timeInterval = setInterval(function(){
+        if (timeLeft > 0){
+            timerEl.textContent = 'Time: ' + timeLeft;
+            timeLeft --;
+        }
+        /*else if (timeLeft <= 0){
+            end();
+        }*/
+    }, 1000);
+};
+
+var answerResponse = function(){
+    var count = 3;
+    var answerInterval = setInterval(function(){
+    
+        if (count > 0 & correctAnswer === true){
+            correctEl.textContent = 'Correct!';
+            count --;
+        }
+        else if (count > 0 & correctAnswer === false) {
+                wrongEl.textContent = 'Wrong!';
+                count --;
+        }
+        else{
+            correctEl.textContent = '';
+            wrongEl.textContent = '';
+            clearInterval(answerInterval);
+            displayMessage();
+        }
+    }, 1000);
+};
+
+//need to fix the timer removal here
+var end = function(){
+    questionEl.style.display ='none';
+    answer1El.style.display ='none';
+    answer2El.style.display ='none';
+    answer3El.style.display ='none';
+    answer4El.style.display ='none';
+    questionEl.textContent = 'All done!';
+    finalScoreEl.textContent = 'Your final score is ' + timeLeft;
+    initialsEl.textContent = 'Enter initials: ';
+    formEl.setAttribute();
+    formEl.querySelector("#send").textContent = "Submit";
+    timerEl.textContent = '0';
+      //use clearinterval() to stop the timer
+    clearInterval(timer);
+      //call the displaymessage() function
+    displayMessage()
+    
+    answerResponse();
 
 
-var question1El = document.querySelector("#question1");
-var question2El = document.querySelector("#question2");
-var question3El = document.querySelector("#question3");
-var question4El = document.querySelector('#question4');
-var question5El = document.querySelector('#question5');
+};
+//NEED to get the end to work and the timer to work, and need to store score
+
+/*
 
 var doneEl = document.querySelector("#done");
-
-var startQuiz = document.querySelector('#start-quiz');
-var timerEl = document.getElementById('time');
 var finalScoreEl = document.getElementById('final-score');
 
-
-var btnQ1Answer1=document.querySelector('#btnQ1Answer1');
-var btnQ1Answer2=document.querySelector('#btnQ1Answer2');
-var btnQ1Answer3=document.querySelector('#btnQ1Answer3');
-var btnQ1Answer4=document.querySelector('#btnQ1Answer4');
-
-var btnQ2Answer1=document.querySelector('#btnQ2Answer1');
-var btnQ2Answer2=document.querySelector('#btnQ2Answer2');
-var btnQ2Answer3=document.querySelector('#btnQ2Answer3');
-var btnQ2Answer4=document.querySelector('#btnQ2Answer4');
-
-var btnQ3Answer1=document.querySelector('#btnQ3Answer1');
-var btnQ3Answer2=document.querySelector('#btnQ3Answer2');
-var btnQ3Answer3=document.querySelector('#btnQ3Answer3');
-var btnQ3Answer4=document.querySelector('#btnQ3Answer4');
-
-var btnQ4Answer1=document.querySelector('#btnQ4Answer1');
-var btnQ4Answer2=document.querySelector('#btnQ4Answer2');
-var btnQ4Answer3=document.querySelector('#btnQ4Answer3');
-var btnQ4Answer4=document.querySelector('#btnQ4Answer4');
-
-var btnQ5Answer1=document.querySelector('#btnQ5Answer1');
-var btnQ5Answer2=document.querySelector('#btnQ5Answer2');
-var btnQ5Answer3=document.querySelector('#btnQ5Answer3');
-var btnQ5Answer4=document.querySelector('#btnQ5Answer4');
-
-var correct1El = document.querySelector('#correct');
-var wrong1El = document.querySelector('#wrong');
-
-var correct2El = document.querySelector('#correct2');
-var wrong2El = document.querySelector('#wrong2');
-
-var correct3El = document.querySelector('#correct3');
-var wrong3El = document.querySelector('#wrong3');
-
-var correct4El = document.querySelector('#correct4');
-var wrong4El = document.querySelector('#wrong4');
-
-var correct5El = document.querySelector('#correct5');
-var wrong5El = document.querySelector('#wrong5');
-
 var correctAnswer=false;
-
-
 
 var countdown = function(){
     var count =40;
@@ -270,12 +447,10 @@ var end = function(){
 
 //timed quiz on JavaScript fundamentals that stores high scores
 
-//WHEN I click the start button
-//THEN a timer starts at 75 and I am presented with a question
 
 
-//WHEN I answer a question
-//THEN I am presented with another question
+
+
 
 
 //WHEN I answer a question incorrectly
@@ -294,3 +469,4 @@ q2();
 q3();
 q4();
 q5();
+*/

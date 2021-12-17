@@ -30,44 +30,13 @@ button {
     flex-wrap: wrap;
     
 }
-#btnAnswer1, #btnAnswer2, #btnAnswer3, #btnAnswer4 {
-    display:flex;
-    flex-wrap: wrap;
+#form{
+    display: none;
+}
+#end{
+    display: none;
 }
 
-.question{
-    display: none;
-}
-#correct{
-    display: none;
-}
-#wrong{
-    display: none;
-}
-#correct2{
-    display: none;
-}
-#wrong2{
-    display: none;
-}
-#correct3{
-    display: none;
-}
-#wrong3{
-    display: none;
-}
-#correct4{
-    display: none;
-}
-#wrong4{
-    display: none;
-}
-#correct5{
-    display: none;
-}
-#wrong5{
-    display: none;
-}
-#done{
-    display: none;
-}
+
+
+
