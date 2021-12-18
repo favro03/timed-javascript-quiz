@@ -6,6 +6,8 @@ var answer3El = document.getElementById('btnAnswer3');
 var answer4El = document.getElementById('btnAnswer4');
 var correctEl = document.getElementById('correct');
 var wrongEl = document.getElementById('wrong');
+var correct2El = document.getElementById('correct2');
+var wrong2El = document.getElementById('wrong2');
 var finalScoreEl = document.getElementById('final-score');
 var initialsEl = document.getElementById('initials');
 var formEl = document.getElementById('initial-form');
@@ -15,7 +17,10 @@ var infoEl = document.querySelector("#intro");
 var startQuizEl = document.querySelector('#start-quiz');
 var timerEl = document.getElementById('time');
 var correctAnswer = "";
-var timeLeft = 0;
+
+var timeLeft = 75;
+
+
 
 startQuizEl.addEventListener('click', function(){
     infoEl.style.display = 'none';
@@ -34,11 +39,14 @@ var question1 = function() {
         correctAnswer = false;
         timeLeft = timeLeft - 10;
         question2();
+        
+       
     });
     answer2El.addEventListener('click', function(){
         correctAnswer = false;
         timeLeft = timeLeft - 10;
         question2();
+        
     });
     answer3El.addEventListener('click', function(){
         correctAnswer = true;
@@ -49,9 +57,9 @@ var question1 = function() {
         timeLeft = timeLeft - 10;
         question2();
     });
-
-    
 };
+
+
 
 var question2 = function() {
     questionEl.textContent = 'The condition in an if/else statement is enclosed ________________.';
@@ -59,12 +67,13 @@ var question2 = function() {
     answer2El.textContent = '2. curly brackets';
     answer3El.textContent = '3. parenthesis';
     answer4El.textContent = '4. square brackets';
-    answerResponse();
     
+       
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
         timeLeft = timeLeft - 10;
         question3();
+        
     });
     answer2El.addEventListener('click', function(){
         correctAnswer = false;
@@ -80,6 +89,8 @@ var question2 = function() {
         timeLeft = timeLeft - 10;
         question3();
     });
+    answerResponse();
+    
 };
 
 var question3 = function() {
@@ -88,7 +99,6 @@ var question3 = function() {
     answer2El.textContent = '2. other arrays';
     answer3El.textContent = '3. booleans';
     answer4El.textContent = '4. all of the above';
-    answerResponse();
     
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
@@ -102,14 +112,15 @@ var question3 = function() {
     });
     answer3El.addEventListener('click', function(){
         correctAnswer = false;
+        timeLeft = timeLeft - 10;
         question4();
     });
     answer4El.addEventListener('click', function(){
         correctAnswer = true;
-        timeLeft = timeLeft - 10;
+        
         question4();
     });
-    
+    answerResponse();
 };
 
 var question4 = function() {
@@ -118,8 +129,7 @@ var question4 = function() {
     answer2El.textContent = '2. curly brackets';
     answer3El.textContent = '3. quotes';
     answer4El.textContent = '4. parenthesis';
-    answerResponse();
-    
+  
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
         timeLeft = timeLeft - 10;
@@ -131,14 +141,16 @@ var question4 = function() {
         question5();
     });
     answer3El.addEventListener('click', function(){
-        correctAnswer = true;
-        question5();
-    });
-    answer4El.addEventListener('click', function(){
         correctAnswer = false;
         timeLeft = timeLeft - 10;
         question5();
     });
+    answer4El.addEventListener('click', function(){
+        correctAnswer = true;
+       
+        question5();
+    });
+    answerResponse();
 };
 
 var question5 = function() {
@@ -147,8 +159,7 @@ var question5 = function() {
     answer2El.textContent = '2. terminal/bash';
     answer3El.textContent = '3. for loops';
     answer4El.textContent = '4. console.log';
-    answerResponse();
-    
+  
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
         timeLeft = timeLeft - 10;
@@ -161,31 +172,69 @@ var question5 = function() {
     });
     answer3El.addEventListener('click', function(){
         correctAnswer = false;
+        timeLeft = timeLeft - 10;
         end();
     });
     answer4El.addEventListener('click', function(){
         correctAnswer = true;
-        timeLeft = timeLeft - 10;
+       
         end();
     });
+    answerResponse();
+   
 };
 
 var timer = function(){
-    var timeLeft = 75;
+    
 
     var timeInterval = setInterval(function(){
         if (timeLeft > 0){
             timerEl.textContent = 'Time: ' + timeLeft;
             timeLeft --;
         }
-        /*else if (timeLeft <= 0){
+        else if (timeLeft <= 0){
             end();
-        }*/
+            clearInterval(timeInterval);
+            timerEl.textContent = 'Time: 0';
+            
+        }
     }, 1000);
 };
 
+
+
+//need to fix the timer removal here I want the timer to show 0, and I think maybe use the html for the score stuff and hide it in css and just show it in thsi function
+var end = function(){
+    questionEl.style.display ='none';
+    answer1El.style.display ='none';
+    answer2El.style.display ='none';
+    answer3El.style.display ='none';
+    answer4El.style.display ='none';
+    questionEl.textContent = 'All done!';
+    finalScoreEl.textContent = 'Your final score is ' + timeLeft;
+    initialsEl.textContent = 'Enter initials: ';
+    formEl.style.display = 'block';
+    answerResponse();
+    
+
+   
+    //this is not showing up in the right place
+    //answerResponse();
+    
+//Don't think this works
+/*
+    answerResponse();
+    timerEl.textContent = '0';
+      //use clearinterval() to stop the timer
+    clearInterval(timer);
+      //call the displaymessage() function
+    displayMessage()
+    */
+    
+};
+
 var answerResponse = function(){
-    var count = 3;
+    var count = 2;
     var answerInterval = setInterval(function(){
     
         if (count > 0 & correctAnswer === true){
@@ -200,36 +249,11 @@ var answerResponse = function(){
             correctEl.textContent = '';
             wrongEl.textContent = '';
             clearInterval(answerInterval);
-            displayMessage();
+           
         }
     }, 1000);
 };
 
-//need to fix the timer removal here I want the timer to show 0, and I think maybe use the html for the score stuff and hide it in css and just show it in thsi function
-var end = function(){
-    questionEl.style.display ='none';
-    answer1El.style.display ='none';
-    answer2El.style.display ='none';
-    answer3El.style.display ='none';
-    answer4El.style.display ='none';
-    questionEl.textContent = 'All done!';
-    finalScoreEl.textContent = 'Your final score is ' + timeLeft;
-    initialsEl.textContent = 'Enter initials: ';
-    formEl.style.display = 'block';
-    //this is not showing up in the right place
-    answerResponse();
-    
-//Don't think this works
-/*
-    answerResponse();
-    timerEl.textContent = '0';
-      //use clearinterval() to stop the timer
-    clearInterval(timer);
-      //call the displaymessage() function
-    displayMessage()
-    */
-    
-};
 
 var initialFormHandler = function (event) {
     event.preventDefault();
