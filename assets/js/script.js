@@ -8,7 +8,7 @@ var correctEl = document.getElementById('correct');
 var wrongEl = document.getElementById('wrong');
 var finalScoreEl = document.getElementById('final-score');
 var initialsEl = document.getElementById('initials');
-var formEl = document.getElementById('form');
+var formEl = document.getElementById('initial-form');
 var submitEl = document.getElementById('end');
 var btnEl = document.getElementsByClassName('btn');
 var infoEl = document.querySelector("#intro");
@@ -205,7 +205,7 @@ var answerResponse = function(){
     }, 1000);
 };
 
-//need to fix the timer removal here
+//need to fix the timer removal here I want the timer to show 0, and I think maybe use the html for the score stuff and hide it in css and just show it in thsi function
 var end = function(){
     questionEl.style.display ='none';
     answer1El.style.display ='none';
@@ -215,18 +215,46 @@ var end = function(){
     questionEl.textContent = 'All done!';
     finalScoreEl.textContent = 'Your final score is ' + timeLeft;
     initialsEl.textContent = 'Enter initials: ';
-    formEl.setAttribute();
-    formEl.querySelector("#send").textContent = "Submit";
+    formEl.style.display = 'block';
+    //this is not showing up in the right place
+    answerResponse();
+    
+//Don't think this works
+/*
+    answerResponse();
     timerEl.textContent = '0';
       //use clearinterval() to stop the timer
     clearInterval(timer);
       //call the displaymessage() function
     displayMessage()
+    */
     
-    answerResponse();
-
-
 };
+
+var initialFormHandler = function (event) {
+    event.preventDefault();
+    var initialNameInput = document.querySelector("input[name='user-initials']").value;
+    
+  
+    // check if inputs are empty (validate)
+    if (!initialNameInput) {
+      alert("You need to fill out the initial form!");
+      return false;
+
+      btnEl.addEventListener
+    }
+    var taskButtonHandler = function (event) {
+        // get target element from event
+        var targetEl = event.target;
+    
+        if (targetEl.matches(".delete-btn")) {
+          var taskId = targetEl.getAttribute("data-task-id");
+          deleteTask(taskId);
+        }
+      };
+  };
+
+  
 //NEED to get the end to work and the timer to work, and need to store score
 
 /*

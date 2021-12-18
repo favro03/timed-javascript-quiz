@@ -36,6 +36,9 @@ button {
 #end{
     display: none;
 }
+#initial-form{
+    display:none;
+}
 
 
 
