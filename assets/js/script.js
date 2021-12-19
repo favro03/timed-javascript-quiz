@@ -17,6 +17,7 @@ var infoEl = document.querySelector("#intro");
 var startQuizEl = document.querySelector('#start-quiz');
 var timerEl = document.getElementById('time');
 var correctAnswer = "";
+var quizEl = document.getElementById('right-wrong');
 
 var timeLeft = 75;
 
@@ -28,8 +29,42 @@ startQuizEl.addEventListener('click', function(){
     question1();  
 });
 
+var timer = function(){
+    
+
+    var timeInterval = setInterval(function(){
+        if (timeLeft > 0){
+            timerEl.textContent = 'Time: ' + timeLeft;
+            timeLeft --;
+        }
+
+        else if (timeLeft <= 0){
+            end();
+            clearInterval(timeInterval);
+            timerEl.textContent = 'Time: 0';   
+        }
+
+        
+        //else if ({
+            //var endTime = timeLeft
+            //clearInterval(timeInterval);
+            //timerEl.textContent = 'Time: ' + timeLeft;
+            
+       // }
+       
+    }, 1000);
+};
+
+var stopFunction = function() {
+    clearInterval(timer);
+    timerEl.textContent = 'Time: '; + timeLeft;
+};
+
+
 var question1 = function() {
-    questionEl.textContent = 'Commonly used data types DO not Include:';
+   
+    
+    questionEl.textContent = 'Commonly used data types DO Not Include:';
     answer1El.textContent = '1. strings';
     answer2El.textContent = '2. booleans';
     answer3El.textContent = '3. alerts';
@@ -37,15 +72,16 @@ var question1 = function() {
 
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
-        question2();
-        
+        clearInterval(timer);
+        timeLeft -= 10;
+        question2(); 
+        timer();    
        
     });
     answer2El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question2();
+        return correctAnswer;
         
     });
     answer3El.addEventListener('click', function(){
@@ -54,8 +90,8 @@ var question1 = function() {
     });
     answer4El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question2();
+        return correctAnswer;
     });
 };
 
@@ -68,17 +104,19 @@ var question2 = function() {
     answer3El.textContent = '3. parenthesis';
     answer4El.textContent = '4. square brackets';
     
+    
        
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
+        
         question3();
+        return correctAnswer;
         
     });
     answer2El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question3();
+        return correctAnswer;
     });
     answer3El.addEventListener('click', function(){
         correctAnswer = true;
@@ -86,8 +124,8 @@ var question2 = function() {
     });
     answer4El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question3();
+        return correctAnswer;
     });
     answerResponse();
     
@@ -102,29 +140,28 @@ var question3 = function() {
     
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question4();
+        return correctAnswer;
     });
     answer2El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question4();
+        return correctAnswer;
     });
     answer3El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question4();
+        return correctAnswer;
     });
     answer4El.addEventListener('click', function(){
         correctAnswer = true;
-        
         question4();
     });
     answerResponse();
 };
 
 var question4 = function() {
-    questionEl.textContent = 'String values must be enclosed within _______ when being assigned to variables.';
+    questionEl.textContent = 'String values must be enclosed within _______________ when being assigned to variables.';
     answer1El.textContent = '1. commas';
     answer2El.textContent = '2. curly brackets';
     answer3El.textContent = '3. quotes';
@@ -132,22 +169,21 @@ var question4 = function() {
   
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question5();
+        return correctAnswer
     });
     answer2El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question5();
+        return correctAnswer;
     });
     answer3El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         question5();
+        return correctAnswer;
     });
     answer4El.addEventListener('click', function(){
         correctAnswer = true;
-       
         question5();
     });
     answerResponse();
@@ -162,44 +198,27 @@ var question5 = function() {
   
     answer1El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         end();
+        return correctAnswer;
     });
     answer2El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         end();
+        return correctAnswer;
     });
     answer3El.addEventListener('click', function(){
         correctAnswer = false;
-        timeLeft = timeLeft - 10;
         end();
+        return correctAnswer;
     });
     answer4El.addEventListener('click', function(){
         correctAnswer = true;
-       
         end();
     });
     answerResponse();
    
 };
 
-var timer = function(){
-    
-
-    var timeInterval = setInterval(function(){
-        if (timeLeft > 0){
-            timerEl.textContent = 'Time: ' + timeLeft;
-            timeLeft --;
-        }
-        else if (timeLeft <= 0){
-            end();
-            clearInterval(timeInterval);
-            timerEl.textContent = 'Time: 0';
-            
-        }
-    }, 1000);
-};
 
 
 
@@ -210,11 +229,13 @@ var end = function(){
     answer2El.style.display ='none';
     answer3El.style.display ='none';
     answer4El.style.display ='none';
+    stopFunction();
     questionEl.textContent = 'All done!';
     finalScoreEl.textContent = 'Your final score is ' + timeLeft;
     initialsEl.textContent = 'Enter initials: ';
     formEl.style.display = 'block';
     answerResponse();
+    return true;
     
 
    
@@ -236,22 +257,29 @@ var end = function(){
 var answerResponse = function(){
     var count = 2;
     var answerInterval = setInterval(function(){
-    
+       
         if (count > 0 & correctAnswer === true){
+            correctEl.style.display = 'block';
             correctEl.textContent = 'Correct!';
             count --;
+            
         }
         else if (count > 0 & correctAnswer === false) {
+                wrongEl.style.display = 'block';
                 wrongEl.textContent = 'Wrong!';
                 count --;
         }
         else{
             correctEl.textContent = '';
             wrongEl.textContent = '';
+            //quizEl.style.display = '';
+         
             clearInterval(answerInterval);
            
         }
+        
     }, 1000);
+    
 };
 
 

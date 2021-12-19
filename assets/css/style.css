@@ -14,6 +14,7 @@ header {
     
 }
 
+
 h2 {
     text-align: center;
     padding: 50px 0px 10px 0px;
@@ -41,5 +42,95 @@ button {
 }
 
 
+#initial-form {
+    outline: none;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-size: 2.2rem;
+    border: 2px solid var(--grey);
+    border-radius: 12px;
+  }
+#question {
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    width: 700px;
+    margin: 10px auto 0px auto;
+    text-align: left;
 
+}
+.btn2{
+    
+    outline: none;
+    border: none;
+    
+  
+    background: #322252;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  
+    
+    
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    width: 150px;
+    margin: 10px auto 0px auto;
+}
+#correct, #wrong  {
+    display: none;
+
+    color: #BFBBC1;
+    font-size: 40px;
+    text-align: left;
+    font-style: italic;
+  
+   
+    width: 250px;
+    margin: 10px auto 0px 400px;
+    border-top:#BFBBC1;
+    border-top: solid;
+   
+}
+
+  .btn {
+    display: none;
+    outline: none;
+    border: none;
+    
+  
+    background: #322252;
+    color: white;
+    font-size: 20px;
+    text-align: left;
+  
+    
+    
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    width: 250px;
+    margin: 10px auto 0px 400px;
+  }
+  
+  .btn2:hover{
+    box-shadow: 0 2px var(--grey);
+    top: -2px;
+    background: #D36EEE;
+  }
+  .btn:hover {
+    box-shadow: 0 2px var(--grey);
+    top: -2px;
+    background: #D36EEE;
+  }
+  .btn:active  {
+    box-shadow: 0 0px var(--grey);
+    top: 0;
+  }
+  .btn2-quiz:active{
+    box-shadow: 0 0px var(--grey);
+    top: 0;
+  }
 
