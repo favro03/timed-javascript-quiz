@@ -33,7 +33,6 @@ button {
 }
 
 
-
 #final-score{
     padding: 10px 20px;
 
@@ -66,7 +65,7 @@ form input {
 }
 
 /*Question formatting*/
-#question {
+#question, #final {
     padding: 10px 20px;
     border-radius: 5px;
     display: block;
@@ -115,6 +114,7 @@ form input {
   width: 150px;
   margin: 10px auto 0px auto;
 }
+
 .btn3{
     
   outline: none;
@@ -164,12 +164,49 @@ form input {
     top: -2px;
     background: #D36EEE;
   }
-  .btn:active  {
-    box-shadow: 0 0px var(--grey);
-    top: 0;
+  
+  
+
+  /*Score Page style*/
+button a {
+  text-decoration: none;
+  color: white;
+}
+
+#high-score{
+    background: #DACBE1;
   }
-  .btn2-quiz:active{
-    box-shadow: 0 0px var(--grey);
-    top: 0;
-  }
+
+
+.btn4{
+  display: inline-block;
+  outline: none;
+  border: none;
+  background: #322252;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 5px auto 0px auto;
+  padding: 10px 15px;
+ 
+}
+.btn4:hover {
+  box-shadow: 0 2px var(--grey);
+  top: -2px;
+  background: #D36EEE;
+}
+
+#high-score, .list{
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    width: 665px;
+    margin: 5px auto 0px auto;
+    text-align: left;
+ 
+}
+.list{
+  width: 700px;
+}
 
