@@ -22,7 +22,7 @@ var quizEl = document.getElementById('right-wrong');
 var timeLeft = 75;
 
 
-
+quizEl.style.display = 'none';
 startQuizEl.addEventListener('click', function(){
     infoEl.style.display = 'none';
     timer();
@@ -259,25 +259,22 @@ var answerResponse = function(){
     var answerInterval = setInterval(function(){
        
         if (count > 0 & correctAnswer === true){
-            correctEl.style.display = 'block';
+            quizEl.style.display = 'block';
             correctEl.textContent = 'Correct!';
             count --;
             
         }
         else if (count > 0 & correctAnswer === false) {
-                wrongEl.style.display = 'block';
+                quizEl.style.display = 'block';
                 wrongEl.textContent = 'Wrong!';
                 count --;
         }
         else{
             correctEl.textContent = '';
             wrongEl.textContent = '';
-            //quizEl.style.display = '';
-         
+            quizEl.style.display = 'none';
             clearInterval(answerInterval);
-           
         }
-        
     }, 1000);
     
 };

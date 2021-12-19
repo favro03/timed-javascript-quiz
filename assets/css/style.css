@@ -79,8 +79,8 @@ button {
     width: 150px;
     margin: 10px auto 0px auto;
 }
-#correct, #wrong  {
-    display: none;
+#right-wrong  {
+    
 
     color: #BFBBC1;
     font-size: 40px;
@@ -88,7 +88,7 @@ button {
     font-style: italic;
   
    
-    width: 250px;
+    width: 700px;
     margin: 10px auto 0px 400px;
     border-top:#BFBBC1;
     border-top: solid;
