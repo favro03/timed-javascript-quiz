@@ -26,6 +26,7 @@ quizEl.style.display = 'none';
 startQuizEl.addEventListener('click', function(){
     infoEl.style.display = 'none';
     timer();
+    
     question1();  
 });
 
@@ -62,7 +63,10 @@ var stopFunction = function() {
 
 
 var question1 = function() {
-   
+    answer1El.style.display = 'block';
+    answer2El.style.display = 'block';
+    answer3El.style.display = 'block';
+    answer4El.style.display = 'block';
     
     questionEl.textContent = 'Commonly used data types DO Not Include:';
     answer1El.textContent = '1. strings';
@@ -224,7 +228,7 @@ var question5 = function() {
 
 //need to fix the timer removal here I want the timer to show 0, and I think maybe use the html for the score stuff and hide it in css and just show it in thsi function
 var end = function(){
-    questionEl.style.display ='none';
+    questionEl.style.display ='All Done!';
     answer1El.style.display ='none';
     answer2El.style.display ='none';
     answer3El.style.display ='none';
@@ -232,8 +236,8 @@ var end = function(){
     stopFunction();
     questionEl.textContent = 'All done!';
     finalScoreEl.textContent = 'Your final score is ' + timeLeft;
-    initialsEl.textContent = 'Enter initials: ';
-    formEl.style.display = 'block';
+    //initialsEl.textContent = 'Enter initials: ';
+    formEl.style.display = 'flex';
     answerResponse();
     return true;
     

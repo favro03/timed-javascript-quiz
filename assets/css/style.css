@@ -31,26 +31,41 @@ button {
     flex-wrap: wrap;
     
 }
-#form{
-    display: none;
-}
-#end{
-    display: none;
-}
-#initial-form{
-    display:none;
-}
 
+
+
+#final-score{
+    padding: 10px 20px;
+
+    display: block;
+    width: 700px;
+    margin: 10px auto 0px auto;
+    text-align: left;
+}
+/*form style*/
 
 #initial-form {
-    outline: none;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    font-size: 2.2rem;
-    border: 2px solid var(--grey);
-    border-radius: 12px;
+    display: none;
+    padding: 10px 20px;
+    
+    width: 730px;
+    margin: 10px auto 0px auto;
+    text-align: left;
+
+   
   }
+#initials {
+  padding: 20px;
+}
+form input {
+    display: block;
+    width: 350px;
+    margin: 10px auto 0px auto;
+    text-align: left;
+  
+}
+
+/*Question formatting*/
 #question {
     padding: 10px 20px;
     border-radius: 5px;
@@ -60,25 +75,10 @@ button {
     text-align: left;
 
 }
-.btn2{
-    
-    outline: none;
-    border: none;
-    
-  
-    background: #322252;
-    color: white;
-    font-size: 20px;
-    text-align: center;
-  
-    
-    
-    padding: 10px 20px;
-    border-radius: 5px;
-    display: block;
-    width: 150px;
-    margin: 10px auto 0px auto;
-}
+
+
+
+/*Right or Wrong display*/
 #right-wrong  {
     
 
@@ -95,8 +95,47 @@ button {
    
 }
 
+/*Button formatting*/
+.btn2{
+    
+  outline: none;
+  border: none;
+  
+
+  background: #322252;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+
+  
+  
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: block;
+  width: 150px;
+  margin: 10px auto 0px auto;
+}
+.btn3{
+    
+  outline: none;
+  border: none;
+  
+
+  background: #322252;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+
+  
+  
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: block;
+  width: 150px;
+  margin: 10px auto 0px auto;
+}
   .btn {
-    display: none;
+   
     outline: none;
     border: none;
     
@@ -110,7 +149,7 @@ button {
     
     padding: 10px 20px;
     border-radius: 5px;
-    display: block;
+    display: none;
     width: 250px;
     margin: 10px auto 0px 400px;
   }
