@@ -283,6 +283,13 @@ var answerResponse = function(){
 enterScoreButton.addEventListener("click", function(event) {
     event.preventDefault();
     
+    var initialInput = document.querySelector("input [name ='user-initials']");
+   
+    if(!initialInput){
+        alert("You need to fill out the task form!");
+        return false;
+    }
+    
     var user = {
       initials: initialsInput.value.trim(),
       score: timeLeft

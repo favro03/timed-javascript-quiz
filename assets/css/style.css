@@ -154,16 +154,12 @@ form input {
     margin: 10px auto 0px 400px;
   }
   
-  .btn2:hover{
+  .btn2:hover, .btn3:hover, .btn:hover{
     box-shadow: 0 2px var(--grey);
     top: -2px;
     background: #D36EEE;
   }
-  .btn:hover {
-    box-shadow: 0 2px var(--grey);
-    top: -2px;
-    background: #D36EEE;
-  }
+  
   
   
 
