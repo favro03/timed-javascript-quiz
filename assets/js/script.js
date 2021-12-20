@@ -19,6 +19,12 @@ var timerEl = document.getElementById('time');
 var correctAnswer = "";
 var quizEl = document.getElementById('right-wrong');
 var timeLeft = 75;
+var enterScoreButton = document.getElementById('enter');
+var initialsInput = document.getElementById('user-initials');
+var deleteButton = document.getElementById('clear');
+
+var list = document.getElementById('list');
+
 
 
 
@@ -238,27 +244,15 @@ var end = function(){
     stopFunction();
     questionEl.textContent = 'All done!';
     finalScoreEl.textContent = 'Your final score is ' + timeLeft;
-    //initialsEl.textContent = 'Enter initials: ';
     formEl.style.display = 'flex    ';
     answerResponse();
-    return true;
-    
 
+    
    
-    //this is not showing up in the right place
-    //answerResponse();
-    
-//Don't think this works
-/*
-    answerResponse();
-    timerEl.textContent = '0';
-      //use clearinterval() to stop the timer
-    clearInterval(timer);
-      //call the displaymessage() function
-    displayMessage()
-    */
-    
 };
+
+
+
 
 var answerResponse = function(){
     var count = 2;
@@ -284,30 +278,24 @@ var answerResponse = function(){
     }, 1000);
     
 };
+//cant i create a event listener for the clear data button, and then change the list to display none.
 
-//See if this is even working
-var initialFormHandler = function (event) {
+enterScoreButton.addEventListener("click", function(event) {
     event.preventDefault();
-    var initialNameInput = document.querySelector("input[name='user-initials']").value;
     
-  
-    // check if inputs are empty (validate)
-    if (!initialNameInput) {
-      alert("You need to fill out the initial form!");
-      return false;
+    var user = {
+      initials: initialsInput.value.trim(),
+      score: timeLeft
+      
+    };
 
-      btnEl.addEventListener
-    }
-    var taskButtonHandler = function (event) {
-        // get target element from event
-        var targetEl = event.target;
     
-        if (targetEl.matches(".delete-btn")) {
-          var taskId = targetEl.getAttribute("data-task-id");
-          deleteTask(taskId);
-        }
-      };
-  };
+    
+   //need to store more then one score
+ 
+    // set new submission to local storage 
+    localStorage.setItem("user", JSON.stringify(user));
+  });
 
 
 
