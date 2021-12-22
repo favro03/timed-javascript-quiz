@@ -1,13 +1,5 @@
 var body = document.body;
 var questionEl = document.getElementById('question');
-var answer1El = document.getElementById('btnAnswer1');
-var answer2El = document.getElementById('btnAnswer2');
-var answer3El = document.getElementById('btnAnswer3');
-var answer4El = document.getElementById('btnAnswer4');
-var correctEl = document.getElementById('correct');
-var wrongEl = document.getElementById('wrong');
-var correct2El = document.getElementById('correct2');
-var wrong2El = document.getElementById('wrong2');
 var finalScoreEl = document.getElementById('final-score');
 var initialsEl = document.getElementById('initials');
 var formEl = document.getElementById('initial-form');
@@ -18,17 +10,41 @@ var startQuizEl = document.querySelector('#start-quiz');
 var timerEl = document.getElementById('time');
 var correctAnswer = "";
 var quizEl = document.getElementById('right-wrong');
-var timeLeft = 75;
+var timeLeft = 5;
 var enterScoreButton = document.getElementById('enter');
 var initialsInput = document.getElementById('user-initials');
 var deleteButton = document.getElementById('clear');
+var stopTime = 0;
+var subtractTen = 10;
+
+var q1Answer1 = document.createElement("button");
+var q1Answer2 = document.createElement("button");
+var q1Answer3 = document.createElement("button");
+var q1Answer4 = document.createElement("button");
+
+var q2Answer1 = document.createElement("button");
+var q2Answer2 = document.createElement("button");
+var q2Answer3 = document.createElement("button");
+var q2Answer4 = document.createElement("button");
+
+var q3Answer1 = document.createElement("button");
+var q3Answer2 = document.createElement("button");
+var q3Answer3 = document.createElement("button");
+var q3Answer4 = document.createElement("button");
+
+var q4Answer1 = document.createElement("button");
+var q4Answer2 = document.createElement("button");
+var q4Answer3 = document.createElement("button");
+var q4Answer4 = document.createElement("button");
+
+var q5Answer1 = document.createElement("button");
+var q5Answer2 = document.createElement("button");
+var q5Answer3 = document.createElement("button");
+var q5Answer4 = document.createElement("button");
 
 var list = document.getElementById('list');
 
-
-
-
-quizEl.style.display = 'none';
+// when you click the button the quiz starts
 startQuizEl.addEventListener('click', function(){
     
     infoEl.style.display = 'none';
@@ -36,252 +52,419 @@ startQuizEl.addEventListener('click', function(){
     question1();  
 });
 
-    
-
+//Timer functions start and stop
+var timeInterval = setInterval(function(){});
 var timer = function(){
-    
-
-    var timeInterval = setInterval(function(){
+    timeInterval = setInterval(function(){
         if (timeLeft > 0){
             timerEl.textContent = 'Time: ' + timeLeft;
             timeLeft --;
         }
-
         else if (timeLeft <= 0){
-            end();
-            clearInterval(timeInterval);
-            timerEl.textContent = 'Time: 0';   
-        }
+            endQuiz();
+            rightOrWrongEl.remove();
+            q1Answer1.remove();
+            q1Answer2.remove();
+            q1Answer3.remove();
+            q1Answer4.remove();
 
-        
-        //else if ({
-            //var endTime = timeLeft
-            //clearInterval(timeInterval);
-            //timerEl.textContent = 'Time: ' + timeLeft;
-            
-       // }
-       
+            q2Answer1.remove();
+            q2Answer2.remove();
+            q2Answer3.remove();
+            q2Answer4.remove();
+
+            q3Answer1.remove();
+            q3Answer2.remove();
+            q3Answer3.remove();
+            q3Answer4.remove();
+
+            q4Answer1.remove();
+            q4Answer2.remove();
+            q4Answer3.remove();
+            q4Answer4.remove();
+
+            q5Answer1.remove();
+            q5Answer2.remove();
+            q5Answer3.remove();
+            q5Answer4.remove();
+
+            timerEl.textContent = 'Time: 0';   
+        }  
+         
     }, 1000);
 };
 
-var stopFunction = function() {
-    clearInterval(timer);
-    timerEl.textContent = 'Time: '; + timeLeft;
+var stopTimer = function() {
+    clearInterval(timeInterval);
+    timerEl.textContent = "Time: " + timeLeft;   
 };
+
+var subtractTenFromTimer = function() {
+    clearInterval(timeInterval);
+    timeLeft = timeLeft - subtractTen;
+    timer(); 
+};
+
+//Questions
+//Question 1
 
 
 var question1 = function() {
-    answer1El.style.display = 'block';
-    answer2El.style.display = 'block';
-    answer3El.style.display = 'block';
-    answer4El.style.display = 'block';
-    
     questionEl.textContent = 'Commonly used data types DO Not Include:';
-    answer1El.textContent = '1. strings';
-    answer2El.textContent = '2. booleans';
-    answer3El.textContent = '3. alerts';
-    answer4El.textContent = '4. numbers';
-
-    answer1El.addEventListener('click', function(){
+   
+    q1Answer1.innerHTML = "1. strings";
+    q1Answer1.className = 'btn';
+    document.body.appendChild(q1Answer1);
+    q1Answer1.addEventListener('click', function(){
         correctAnswer = false;
-        clearInterval(timer);
-        timeLeft -= 10;
-        question2(); 
-        timer();    
-       
-    });
-    answer2El.addEventListener('click', function(){
-        correctAnswer = false;
+        subtractTenFromTimer();
         question2();
+        q1Answer1.remove();
+        q1Answer2.remove();
+        q1Answer3.remove();
+        q1Answer4.remove();
         return correctAnswer;
-        
     });
-    answer3El.addEventListener('click', function(){
+ 
+   
+    q1Answer2.innerHTML = "2. booleans";
+    q1Answer2.className = 'btn';
+    document.body.appendChild(q1Answer2);
+    q1Answer2.addEventListener('click', function(){
+        correctAnswer = false;
+        subtractTenFromTimer();
+        question2();
+        q1Answer1.remove();
+        q1Answer2.remove();
+        q1Answer3.remove();
+        q1Answer4.remove();
+        return correctAnswer;
+    });
+
+    
+    q1Answer3.innerHTML = "3. alerts";
+    q1Answer3.className = 'btn';
+    document.body.appendChild(q1Answer3);
+    q1Answer3.addEventListener('click', function(){
         correctAnswer = true;
         question2();
-    });
-    answer4El.addEventListener('click', function(){
-        correctAnswer = false;
-        question2();
+        q1Answer1.remove();
+        q1Answer2.remove();
+        q1Answer3.remove();
+        q1Answer4.remove();
         return correctAnswer;
     });
+
+    
+    q1Answer4.innerHTML = "4. numbers";
+    q1Answer4.className = 'btn';
+    document.body.appendChild(q1Answer4);
+    q1Answer4.addEventListener('click', function(){
+        correctAnswer = false;
+        subtractTenFromTimer();
+        question2();
+        q1Answer1.remove();
+        q1Answer2.remove();
+        q1Answer3.remove();
+        q1Answer4.remove();
+        return correctAnswer;
+    });
+
 };
 
 
-
-var question2 = function() {
+//question 2
+var question2 = function() {  
+    
     questionEl.textContent = 'The condition in an if/else statement is enclosed ________________.';
-    answer1El.textContent = '1. quotes';
-    answer2El.textContent = '2. curly brackets';
-    answer3El.textContent = '3. parenthesis';
-    answer4El.textContent = '4. square brackets';
     
-    
-       
-    answer1El.addEventListener('click', function(){
+    q2Answer1.innerHTML = "1. quotes";
+    q2Answer1.className = 'btn';
+    document.body.appendChild(q2Answer1);
+    q2Answer1.addEventListener('click', function(){
         correctAnswer = false;
-        
+        subtractTenFromTimer();
         question3();
-        return correctAnswer;
-        
-    });
-    answer2El.addEventListener('click', function(){
-        correctAnswer = false;
-        question3();
+        q2Answer1.remove();
+        q2Answer2.remove();
+        q2Answer3.remove();
+        q2Answer4.remove();
         return correctAnswer;
     });
-    answer3El.addEventListener('click', function(){
+
+    
+    q2Answer2.innerHTML = "2. curly brackets";
+    q2Answer2.className = 'btn';
+    document.body.appendChild(q2Answer2);
+    q2Answer2.addEventListener('click', function(){
+        correctAnswer = false;
+        subtractTenFromTimer();
+        question3();
+        q2Answer1.remove();
+        q2Answer2.remove();
+        q2Answer3.remove();
+        q2Answer4.remove();
+        return correctAnswer;
+    });
+
+   
+    q2Answer3.innerHTML = "3. parenthesis";
+    q2Answer3.className = 'btn';
+    document.body.appendChild(q2Answer3);
+    q2Answer3.addEventListener('click', function(){
         correctAnswer = true;
         question3();
+        q2Answer1.remove();
+        q2Answer2.remove();
+        q2Answer3.remove();
+        q2Answer4.remove();
+        return correctAnswer;
     });
-    answer4El.addEventListener('click', function(){
+
+    
+    q2Answer4.innerHTML = "4. square brackets";
+    q2Answer4.className = 'btn';
+    document.body.appendChild(q2Answer4);
+    q2Answer4.addEventListener('click', function(){
         correctAnswer = false;
+        subtractTenFromTimer();
         question3();
+        q2Answer1.remove();
+        q2Answer2.remove();
+        q2Answer3.remove();
+        q2Answer4.remove();
         return correctAnswer;
     });
     answerResponse();
-    
 };
 
+//question 3
 var question3 = function() {
+    rightOrWrongEl.remove();
     questionEl.textContent = 'Arrays in JavaScript can be used to store ________________.';
-    answer1El.textContent = '1. numbers and strings';
-    answer2El.textContent = '2. other arrays';
-    answer3El.textContent = '3. booleans';
-    answer4El.textContent = '4. all of the above';
     
-    answer1El.addEventListener('click', function(){
+    
+    q3Answer1.innerHTML = "1. numbers and strings";
+    q3Answer1.className = 'btn';
+    document.body.appendChild(q3Answer1);
+    q3Answer1.addEventListener('click', function(){
         correctAnswer = false;
+        subtractTenFromTimer();
         question4();
+        q3Answer1.remove();
+        q3Answer2.remove();
+        q3Answer3.remove();
+        q3Answer4.remove();
         return correctAnswer;
     });
-    answer2El.addEventListener('click', function(){
+
+    
+    q3Answer2.innerHTML = "2. other arrays";
+    q3Answer2.className = 'btn';
+    document.body.appendChild(q3Answer2);
+    q3Answer2.addEventListener('click', function(){
         correctAnswer = false;
+        subtractTenFromTimer();
         question4();
+        q3Answer1.remove();
+        q3Answer2.remove();
+        q3Answer3.remove();
+        q3Answer4.remove();
         return correctAnswer;
     });
-    answer3El.addEventListener('click', function(){
+
+    
+    q3Answer3.innerHTML = "3. booleans";
+    q3Answer3.className = 'btn';
+    document.body.appendChild(q3Answer3);
+    q3Answer3.addEventListener('click', function(){
         correctAnswer = false;
+        subtractTenFromTimer();
         question4();
+        q3Answer1.remove();
+        q3Answer2.remove();
+        q3Answer3.remove();
+        q3Answer4.remove();
         return correctAnswer;
     });
-    answer4El.addEventListener('click', function(){
+
+    
+    q3Answer4.innerHTML = "4. all of the above";
+    q3Answer4.className = 'btn';
+    document.body.appendChild(q3Answer4);
+    q3Answer4.addEventListener('click', function(){
         correctAnswer = true;
         question4();
+        q3Answer1.remove();
+        q3Answer2.remove();
+        q3Answer3.remove();
+        q3Answer4.remove();
+        return correctAnswer;
     });
-    answerResponse();
+    answerResponse();  
 };
 
+//question 4
 var question4 = function() {
+    
     questionEl.textContent = 'String values must be enclosed within _______________ when being assigned to variables.';
-    answer1El.textContent = '1. commas';
-    answer2El.textContent = '2. curly brackets';
-    answer3El.textContent = '3. quotes';
-    answer4El.textContent = '4. parenthesis';
-  
-    answer1El.addEventListener('click', function(){
+    
+    
+    q4Answer1.innerHTML = "1. commas";
+    q4Answer1.className = 'btn';
+    document.body.appendChild(q4Answer1);
+    q4Answer1.addEventListener('click', function(){
         correctAnswer = false;
+        subtractTenFromTimer();
         question5();
-        return correctAnswer
-    });
-    answer2El.addEventListener('click', function(){
-        correctAnswer = false;
-        question5();
+        q4Answer1.remove();
+        q4Answer2.remove();
+        q4Answer3.remove();
+        q4Answer4.remove();
         return correctAnswer;
     });
-    answer3El.addEventListener('click', function(){
+
+    
+    q4Answer2.innerHTML = "2. curly brackets";
+    q4Answer2.className = 'btn';
+    document.body.appendChild(q4Answer2);
+    q4Answer2.addEventListener('click', function(){
         correctAnswer = false;
+        subtractTenFromTimer();
         question5();
+        q4Answer1.remove();
+        q4Answer2.remove();
+        q4Answer3.remove();
+        q4Answer4.remove();
         return correctAnswer;
     });
-    answer4El.addEventListener('click', function(){
+
+    
+    q4Answer3.innerHTML = "3. quotes";
+    q4Answer3.className = 'btn';
+    document.body.appendChild(q4Answer3);
+    q4Answer3.addEventListener('click', function(){
+        correctAnswer = false;
+        subtractTenFromTimer();
+        question5();
+        q4Answer1.remove();
+        q4Answer2.remove();
+        q4Answer3.remove();
+        q4Answer4.remove();
+        return correctAnswer;
+    });
+
+    
+    q4Answer4.innerHTML = "4. parenthesis";
+    q4Answer4.className = 'btn';
+    document.body.appendChild(q4Answer4);
+    q4Answer4.addEventListener('click', function(){
         correctAnswer = true;
         question5();
+        q4Answer1.remove();
+        q4Answer2.remove();
+        q4Answer3.remove();
+        q4Answer4.remove();
+        return correctAnswer;
     });
     answerResponse();
 };
 
+//question 5
 var question5 = function() {
+    
     questionEl.textContent = 'A very useful tool used during development and debugging for printing content to the debugger is:';
-    answer1El.textContent = '1. JavaScript';
-    answer2El.textContent = '2. terminal/bash';
-    answer3El.textContent = '3. for loops';
-    answer4El.textContent = '4. console.log';
-  
-    answer1El.addEventListener('click', function(){
+    
+    q5Answer1.innerHTML = "1. JavaScript";
+    q5Answer1.className = 'btn';
+    document.body.appendChild(q5Answer1);
+    q5Answer1.addEventListener('click', function(){
         correctAnswer = false;
-        end();
+        subtractTenFromTimer();
+        endQuiz();
+        q5Answer1.remove();
+        q5Answer2.remove();
+        q5Answer3.remove();
+        q5Answer4.remove();
         return correctAnswer;
     });
-    answer2El.addEventListener('click', function(){
+
+    
+    q5Answer2.innerHTML = "2. terminal/bash";
+    q5Answer2.className = 'btn';
+    document.body.appendChild(q5Answer2);
+    q5Answer2.addEventListener('click', function(){
         correctAnswer = false;
-        end();
+        subtractTenFromTimer();
+        endQuiz();
+        q5Answer1.remove();
+        q5Answer2.remove();
+        q5Answer3.remove();
+        q5Answer4.remove();
         return correctAnswer;
     });
-    answer3El.addEventListener('click', function(){
+
+    
+    q5Answer3.innerHTML = "3. for loops";
+    q5Answer3.className = 'btn';
+    document.body.appendChild(q5Answer3);
+    q5Answer3.addEventListener('click', function(){
         correctAnswer = false;
-        end();
+        subtractTenFromTimer();
+        endQuiz();
+        q5Answer1.remove();
+        q5Answer2.remove();
+        q5Answer3.remove();
+        q5Answer4.remove();
         return correctAnswer;
     });
-    answer4El.addEventListener('click', function(){
+
+    q5Answer4.innerHTML = "4. console.log";
+    q5Answer4.className = 'btn';
+    document.body.appendChild(q5Answer4);
+    q5Answer4.addEventListener('click', function(){
         correctAnswer = true;
-        end();
+        endQuiz();
+        q5Answer1.remove();
+        q5Answer2.remove();
+        q5Answer3.remove();
+        q5Answer4.remove(); 
+        return correctAnswer;
     });
     answerResponse();
-   
 };
 
-
-
-
-//need to fix the timer removal here I want the timer to show 0, and I think maybe use the html for the score stuff and hide it in css and just show it in thsi function
-var end = function(){
-   
-    answer1El.style.display ='none';
-    answer2El.style.display ='none';
-    answer3El.style.display ='none';
-    answer4El.style.display ='none';
-    stopFunction();
+//Quiz ends
+var endQuiz = function(){
+    rightOrWrongEl.remove();
+    stopTimer()
     questionEl.textContent = 'All done!';
     finalScoreEl.textContent = 'Your final score is ' + timeLeft;
-    formEl.style.display = 'flex    ';
+    formEl.style.display = 'flex';
     answerResponse();
-
-    
-   
 };
 
 
 
-
+var rightOrWrongEl = document.createElement("h3");
 var answerResponse = function(){
-    var count = 2;
-    var answerInterval = setInterval(function(){
-       
-        if (count > 0 & correctAnswer === true){
-            quizEl.style.display = 'block';
-            correctEl.textContent = 'Correct!';
-            count --;
-            
-        }
-        else if (count > 0 & correctAnswer === false) {
-                quizEl.style.display = 'block';
-                wrongEl.textContent = 'Wrong!';
-                count --;
-        }
-        else{
-            correctEl.textContent = '';
-            wrongEl.textContent = '';
-            quizEl.style.display = 'none';
-            clearInterval(answerInterval);
-        }
-    }, 1000);
-    
+    rightOrWrongEl.id = 'right-wrong'
+
+    if (correctAnswer === true){
+        rightOrWrongEl.textContent = "Correct!"
+        document.body.appendChild(rightOrWrongEl);
+    }
+    else if (correctAnswer === false) {
+        rightOrWrongEl.textContent = "Wrong!"
+        document.body.appendChild(rightOrWrongEl);
+    }    
+   
 };
 //cant i create a event listener for the clear data button, and then change the list to display none.
 
-enterScoreButton.addEventListener("click", function(event) {
-    event.preventDefault();
+/*enterScoreButton.addEventListener("click", function(event) {
+    
+    //event.preventDefault();
     
     var initialInput = document.querySelector("input [name ='user-initials']");
    
@@ -302,9 +485,48 @@ enterScoreButton.addEventListener("click", function(event) {
  
     // set new submission to local storage 
     localStorage.setItem("user", JSON.stringify(user));
-  });
+  });*/
 
+//Working on getting initials and putting them on screen
 
-
-
+/*var taskFormHandler = function (event) {
+    event.preventDefault();
+    var initialInput = document.querySelector("input[name='user-initials']").value;
+    
   
+    // check if inputs are empty (validate)
+    if (!initialInput) {
+      alert("You need to fill out the task form!");
+      return false;
+    }
+  
+    // reset form fields for next task to be entered
+    document.querySelector("input[name='user-initials']").value = "";
+    
+    
+    var user = {
+        name: initialInput,
+        score: timeLeft
+    };
+  
+    createHighScore(taskDataObj);
+    
+  };
+
+  var createHighScore = function(taskDataObj) {
+    var listItemEl = document.createElement("li");
+    listItemEl.className = "list";
+    listItemEl.appendChild(taskInfoEl);
+  
+  
+   
+  
+    tasks.push(taskDataObj);
+  
+    // save tasks to localStorage
+    saveTasks();
+  
+    
+  };
+  var taskDataObj=[];
+  */
