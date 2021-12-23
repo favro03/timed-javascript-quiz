@@ -1,19 +1,24 @@
 var body = document.body;
 var questionEl = document.getElementById('question');
 var finalScoreEl = document.getElementById('final-score');
-var initialsEl = document.getElementById('initials');
+var done = document.getElementById('done');
+//var initialsEl = document.getElementById('initials');
 var formEl = document.getElementById('initial-form');
-var submitEl = document.getElementById('end');
+//var submitEl = document.getElementById('end');
 var btnEl = document.getElementsByClassName('btn');
 var infoEl = document.querySelector("#intro");
 var startQuizEl = document.querySelector('#start-quiz');
 var timerEl = document.getElementById('time');
-var correctAnswer = "";
-var quizEl = document.getElementById('right-wrong');
-var timeLeft = 5;
-var enterScoreButton = document.getElementById('enter');
-var initialsInput = document.getElementById('user-initials');
-var deleteButton = document.getElementById('clear');
+//var quizEl = document.getElementById('right-wrong');
+var listItemEl = document.getElementById('list');
+
+//var enterScoreButton = document.getElementById('enter');
+//var initialsInput = document.getElementById('user-initials');
+//var deleteButton = document.getElementById('clear');
+
+
+
+var timeLeft = 75;
 var stopTime = 0;
 var subtractTen = 10;
 
@@ -42,7 +47,15 @@ var q5Answer2 = document.createElement("button");
 var q5Answer3 = document.createElement("button");
 var q5Answer4 = document.createElement("button");
 
-var list = document.getElementById('list');
+var form = document.createElement("FORm");
+
+//var highScoreTitle = document.createElement("h2");
+
+//listEl goes directly to the Ordered list, 
+//should be able to create an element in the list by id
+
+
+
 
 // when you click the button the quiz starts
 startQuizEl.addEventListener('click', function(){
@@ -52,7 +65,7 @@ startQuizEl.addEventListener('click', function(){
     question1();  
 });
 
-//Timer functions start and stop
+//Timer functions start, stop and add 10 seconds
 var timeInterval = setInterval(function(){});
 var timer = function(){
     timeInterval = setInterval(function(){
@@ -89,8 +102,7 @@ var timer = function(){
             q5Answer4.remove();
 
             timerEl.textContent = 'Time: 0';   
-        }  
-         
+        }      
     }, 1000);
 };
 
@@ -107,8 +119,6 @@ var subtractTenFromTimer = function() {
 
 //Questions
 //Question 1
-
-
 var question1 = function() {
     questionEl.textContent = 'Commonly used data types DO Not Include:';
    
@@ -126,7 +136,6 @@ var question1 = function() {
         return correctAnswer;
     });
  
-   
     q1Answer2.innerHTML = "2. booleans";
     q1Answer2.className = 'btn';
     document.body.appendChild(q1Answer2);
@@ -141,7 +150,6 @@ var question1 = function() {
         return correctAnswer;
     });
 
-    
     q1Answer3.innerHTML = "3. alerts";
     q1Answer3.className = 'btn';
     document.body.appendChild(q1Answer3);
@@ -155,7 +163,6 @@ var question1 = function() {
         return correctAnswer;
     });
 
-    
     q1Answer4.innerHTML = "4. numbers";
     q1Answer4.className = 'btn';
     document.body.appendChild(q1Answer4);
@@ -169,13 +176,10 @@ var question1 = function() {
         q1Answer4.remove();
         return correctAnswer;
     });
-
 };
-
 
 //question 2
 var question2 = function() {  
-    
     questionEl.textContent = 'The condition in an if/else statement is enclosed ________________.';
     
     q2Answer1.innerHTML = "1. quotes";
@@ -192,7 +196,6 @@ var question2 = function() {
         return correctAnswer;
     });
 
-    
     q2Answer2.innerHTML = "2. curly brackets";
     q2Answer2.className = 'btn';
     document.body.appendChild(q2Answer2);
@@ -207,7 +210,6 @@ var question2 = function() {
         return correctAnswer;
     });
 
-   
     q2Answer3.innerHTML = "3. parenthesis";
     q2Answer3.className = 'btn';
     document.body.appendChild(q2Answer3);
@@ -221,7 +223,6 @@ var question2 = function() {
         return correctAnswer;
     });
 
-    
     q2Answer4.innerHTML = "4. square brackets";
     q2Answer4.className = 'btn';
     document.body.appendChild(q2Answer4);
@@ -242,8 +243,7 @@ var question2 = function() {
 var question3 = function() {
     rightOrWrongEl.remove();
     questionEl.textContent = 'Arrays in JavaScript can be used to store ________________.';
-    
-    
+
     q3Answer1.innerHTML = "1. numbers and strings";
     q3Answer1.className = 'btn';
     document.body.appendChild(q3Answer1);
@@ -258,7 +258,6 @@ var question3 = function() {
         return correctAnswer;
     });
 
-    
     q3Answer2.innerHTML = "2. other arrays";
     q3Answer2.className = 'btn';
     document.body.appendChild(q3Answer2);
@@ -273,7 +272,6 @@ var question3 = function() {
         return correctAnswer;
     });
 
-    
     q3Answer3.innerHTML = "3. booleans";
     q3Answer3.className = 'btn';
     document.body.appendChild(q3Answer3);
@@ -288,7 +286,6 @@ var question3 = function() {
         return correctAnswer;
     });
 
-    
     q3Answer4.innerHTML = "4. all of the above";
     q3Answer4.className = 'btn';
     document.body.appendChild(q3Answer4);
@@ -305,10 +302,8 @@ var question3 = function() {
 };
 
 //question 4
-var question4 = function() {
-    
+var question4 = function() { 
     questionEl.textContent = 'String values must be enclosed within _______________ when being assigned to variables.';
-    
     
     q4Answer1.innerHTML = "1. commas";
     q4Answer1.className = 'btn';
@@ -324,7 +319,6 @@ var question4 = function() {
         return correctAnswer;
     });
 
-    
     q4Answer2.innerHTML = "2. curly brackets";
     q4Answer2.className = 'btn';
     document.body.appendChild(q4Answer2);
@@ -339,13 +333,11 @@ var question4 = function() {
         return correctAnswer;
     });
 
-    
     q4Answer3.innerHTML = "3. quotes";
     q4Answer3.className = 'btn';
     document.body.appendChild(q4Answer3);
     q4Answer3.addEventListener('click', function(){
-        correctAnswer = false;
-        subtractTenFromTimer();
+        correctAnswer = true;
         question5();
         q4Answer1.remove();
         q4Answer2.remove();
@@ -354,12 +346,12 @@ var question4 = function() {
         return correctAnswer;
     });
 
-    
     q4Answer4.innerHTML = "4. parenthesis";
     q4Answer4.className = 'btn';
     document.body.appendChild(q4Answer4);
     q4Answer4.addEventListener('click', function(){
-        correctAnswer = true;
+        correctAnswer = false;
+        subtractTenFromTimer();
         question5();
         q4Answer1.remove();
         q4Answer2.remove();
@@ -389,7 +381,6 @@ var question5 = function() {
         return correctAnswer;
     });
 
-    
     q5Answer2.innerHTML = "2. terminal/bash";
     q5Answer2.className = 'btn';
     document.body.appendChild(q5Answer2);
@@ -404,7 +395,6 @@ var question5 = function() {
         return correctAnswer;
     });
 
-    
     q5Answer3.innerHTML = "3. for loops";
     q5Answer3.className = 'btn';
     document.body.appendChild(q5Answer3);
@@ -433,19 +423,22 @@ var question5 = function() {
     });
     answerResponse();
 };
-
+var finalScoreMessage = document.createElement("p");
 //Quiz ends
 var endQuiz = function(){
+    q5Answer1.remove();
+    q5Answer2.remove();
+    q5Answer3.remove();
+    q5Answer4.remove(); 
     rightOrWrongEl.remove();
     stopTimer()
     questionEl.textContent = 'All done!';
-    finalScoreEl.textContent = 'Your final score is ' + timeLeft;
+    finalScoreEl.textContent = "Your final score is " + timeLeft;
     formEl.style.display = 'flex';
     answerResponse();
 };
 
-
-
+//display if the question is answered correctly or not
 var rightOrWrongEl = document.createElement("h3");
 var answerResponse = function(){
     rightOrWrongEl.id = 'right-wrong'
@@ -458,34 +451,59 @@ var answerResponse = function(){
         rightOrWrongEl.textContent = "Wrong!"
         document.body.appendChild(rightOrWrongEl);
     }    
-   
 };
-//cant i create a event listener for the clear data button, and then change the list to display none.
 
-/*enterScoreButton.addEventListener("click", function(event) {
+//WHAT I WANT TO DO
+    //Enter your initials, click the button (if you don't an alert comes up)
+    //Button directs you to the highscore page
     
-    //event.preventDefault();
+    //initial object is saved to a array
+    //the array is stored in local storage
+    //get the array from local storage
+    //for loop though the array and print to the high score page
+    //click on the clear all button and clear the high scores(delete array)
+
+        
+        
     
-    var initialInput = document.querySelector("input [name ='user-initials']");
-   
-    if(!initialInput){
-        alert("You need to fill out the task form!");
-        return false;
-    }
+
+var scores = []
+/*enterScoreButton.addEventListener("click", function() {
+   validateForm();
+    
+    
     
     var user = {
       initials: initialsInput.value.trim(),
       score: timeLeft
-      
     };
-
-    
-    
-   //need to store more then one score
- 
+    scores.push(user);
     // set new submission to local storage 
-    localStorage.setItem("user", JSON.stringify(user));
-  });*/
+    localStorage.setItem("scores", JSON.stringify(scores));
+    console.log(scores);
+  });
+
+  /*
+  //get high score
+  var getHighScore = function() {
+    var highScore = localStorage.getItem("user");
+    var listItemEl = document.createElement("li");
+    listItemEl.className = "list";
+    listItemEl.textContent = highScore;
+    listItemEl.appendChild(taskInfoEl);
+  
+  
+   
+  
+  
+  
+    // save tasks to localStorage
+   
+  
+    
+  };
+  
+  
 
 //Working on getting initials and putting them on screen
 

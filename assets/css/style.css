@@ -44,14 +44,18 @@ button {
 /*form style*/
 
 #initial-form {
+    
     display: none;
+    flex-wrap: wrap;
     padding: 10px 20px;
     
-    width: 730px;
+    width: 700px;
     margin: 10px auto 0px auto;
     text-align: left;
-
-   
+    text-align: center;
+  }
+  .text {
+    padding: 20px 0px;
   }
 #initials {
   padding: 20px;
