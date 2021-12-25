@@ -462,16 +462,13 @@ var answerResponse = function(){
 };
 //cant i create a event listener for the clear data button, and then change the list to display none.
 
-/*enterScoreButton.addEventListener("click", function(event) {
+enterScoreButton.addEventListener("click", function(event) {
     
     //event.preventDefault();
     
     var initialInput = document.querySelector("input [name ='user-initials']");
    
-    if(!initialInput){
-        alert("You need to fill out the task form!");
-        return false;
-    }
+    
     
     var user = {
       initials: initialsInput.value.trim(),
@@ -485,7 +482,7 @@ var answerResponse = function(){
  
     // set new submission to local storage 
     localStorage.setItem("user", JSON.stringify(user));
-  });*/
+  });
 
 //Working on getting initials and putting them on screen
 
