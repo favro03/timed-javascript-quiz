@@ -2,19 +2,23 @@ var body = document.body;
 var questionEl = document.getElementById('question');
 var finalScoreEl = document.getElementById('final-score');
 var done = document.getElementById('done');
-//var initialsEl = document.getElementById('initials');
+
 var formEl = document.getElementById('initial-form');
-//var submitEl = document.getElementById('end');
+
 var btnEl = document.getElementsByClassName('btn');
 var infoEl = document.querySelector("#intro");
 var startQuizEl = document.querySelector('#start-quiz');
 var timerEl = document.getElementById('time');
-//var quizEl = document.getElementById('right-wrong');
-var listItemEl = document.getElementById('list');
 
-//var enterScoreButton = document.getElementById('enter');
-//var initialsInput = document.getElementById('user-initials');
+var listItemEl = document.getElementById('list');
+var input = document.getElementById('score-button');
+var userInput = document.getElementById('initials');
+
+
+
+
 //var deleteButton = document.getElementById('clear');
+var initialInput = document.querySelector("input[name='initials']");
 
 
 
@@ -47,7 +51,7 @@ var q5Answer2 = document.createElement("button");
 var q5Answer3 = document.createElement("button");
 var q5Answer4 = document.createElement("button");
 
-var form = document.createElement("FORm");
+var form = document.createElement("FORM");
 
 //var highScoreTitle = document.createElement("h2");
 
@@ -59,7 +63,6 @@ var form = document.createElement("FORm");
 
 // when you click the button the quiz starts
 startQuizEl.addEventListener('click', function(){
-    
     infoEl.style.display = 'none';
     timer();
     question1();  
@@ -425,6 +428,9 @@ var question5 = function() {
 };
 var finalScoreMessage = document.createElement("p");
 //Quiz ends
+var scores = [];    
+var users= {};
+
 var endQuiz = function(){
     q5Answer1.remove();
     q5Answer2.remove();
@@ -435,8 +441,32 @@ var endQuiz = function(){
     questionEl.textContent = 'All done!';
     finalScoreEl.textContent = "Your final score is " + timeLeft;
     formEl.style.display = 'flex';
+    
     answerResponse();
+   
 };
+var input = document.getElementsByTagName('input').value;
+console.log(input);
+
+var userObj = {
+    initials: initialInput,
+    score: timeLeft
+}
+
+
+
+    
+    // set new submission to local storage 
+   // localStorage.setItem("scores", JSON.stringify(scores));
+   // console.log(scores);
+    
+ 
+
+
+
+//start new
+
+//End new  
 
 //display if the question is answered correctly or not
 var rightOrWrongEl = document.createElement("h3");
@@ -454,8 +484,8 @@ var answerResponse = function(){
 };
 
 //WHAT I WANT TO DO
-    //Enter your initials, click the button (if you don't an alert comes up)
-    //Button directs you to the highscore page
+  
+  
     
     //initial object is saved to a array
     //the array is stored in local storage
@@ -463,25 +493,23 @@ var answerResponse = function(){
     //for loop though the array and print to the high score page
     //click on the clear all button and clear the high scores(delete array)
 
-        
-        
+  
+var saveScores = function(){
     
 
-var scores = []
-/*enterScoreButton.addEventListener("click", function() {
-   validateForm();
+    // Put the object into storage
+    localStorage.setItem('scores', JSON.stringify(scores));
     
+    // Retrieve the object from storage
+    var retrievedObject = localStorage.getItem('scores');
+
+    console.log('retrievedObject: ', JSON.parse(retrievedObject));
     
+};        
     
-    var user = {
-      initials: initialsInput.value.trim(),
-      score: timeLeft
-    };
-    scores.push(user);
-    // set new submission to local storage 
-    localStorage.setItem("scores", JSON.stringify(scores));
-    console.log(scores);
-  });
+
+
+
 
   /*
   //get high score
@@ -507,19 +535,7 @@ var scores = []
 
 //Working on getting initials and putting them on screen
 
-/*var taskFormHandler = function (event) {
-    event.preventDefault();
-    var initialInput = document.querySelector("input[name='user-initials']").value;
-    
-  
-    // check if inputs are empty (validate)
-    if (!initialInput) {
-      alert("You need to fill out the task form!");
-      return false;
-    }
-  
-    // reset form fields for next task to be entered
-    document.querySelector("input[name='user-initials']").value = "";
+
     
     
     var user = {
