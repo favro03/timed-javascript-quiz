@@ -428,7 +428,6 @@ var question5 = function() {
 };
 var finalScoreMessage = document.createElement("p");
 //Quiz ends
-var scores = [];    
 var users= {};
 
 var endQuiz = function(){
@@ -441,17 +440,49 @@ var endQuiz = function(){
     questionEl.textContent = 'All done!';
     finalScoreEl.textContent = "Your final score is " + timeLeft;
     formEl.style.display = 'flex';
-    
+    validateForm();
+  
     answerResponse();
    
 };
-var input = document.getElementsByTagName('input').value;
-console.log(input);
+var inputInitials= document.getElementById("initials");
+var validateForm = function() {
 
-var userObj = {
-    initials: initialInput,
-    score: timeLeft
-}
+    if (inputInitials == null) {
+      alert("Initials must be filled out");
+      return false;
+    }
+  };
+  
+
+//var dataInput = document.getElementById("initials");
+//localStorage.setItem("initials", dataInput.value);
+var scores = [];
+var store = document.getElementById('score-button');
+store.addEventListener('click', function(){
+    var inputInitials= document.getElementById("initials");
+    localStorage.setItem("initials", inputInitials.value + "-" + timeLeft);
+    scores.pop();
+    scores.push(localStorage);
+    console.log(scores);
+});
+  /*
+var initialInput = document.querySelector("input[name='fname']").value;
+var dataInput = document.querySelector("#initials").value;
+var input = document.getElementsByTagName('input').value;
+var scoreButton = document.getElementById('score-button');
+scoreButton.addEventListener('click', function(){
+
+    var userObj = {
+        initials: initialInput,
+        score: timeLeft
+    };
+
+    localStorage.setItem("userObj", JSON.stringify(userObj));
+});*/
+
+
+
 
 
 
@@ -532,10 +563,7 @@ var saveScores = function(){
   };
   
   
-
 //Working on getting initials and putting them on screen
-
-
     
     
     var user = {
@@ -546,7 +574,6 @@ var saveScores = function(){
     createHighScore(taskDataObj);
     
   };
-
   var createHighScore = function(taskDataObj) {
     var listItemEl = document.createElement("li");
     listItemEl.className = "list";
