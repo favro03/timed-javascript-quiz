@@ -8,17 +8,13 @@ var loadScores = function(){
     //console.log('getScores: ', JSON.parse(getScores));
     li.textContent = (JSON.parse(getScores));
     listItemEl.appendChild(li);
-   console.log(getScores);
 };
-
 
 var deleteScores = function(){
     clearScoresEl.addEventListener('click', function() {
-        console.log("clicked");
         localStorage.clear();
         listItemEl.style.display="none";
     });
-
 };
 
 loadScores();

@@ -2,26 +2,14 @@ var body = document.body;
 var questionEl = document.getElementById('question');
 var finalScoreEl = document.getElementById('final-score');
 var done = document.getElementById('done');
-
 var formEl = document.getElementById('initial-form');
-
 var btnEl = document.getElementsByClassName('btn');
 var infoEl = document.querySelector("#intro");
 var startQuizEl = document.querySelector('#start-quiz');
 var timerEl = document.getElementById('time');
-
-
-
 var input = document.getElementById('score-button');
 var userInput = document.getElementById('initials');
-
-
-
-
-//var deleteButton = document.getElementById('clear');
 var initialInput = document.querySelector("input[name='initials']");
-
-
 
 var timeLeft = 75;
 var stopTime = 0;
@@ -53,13 +41,6 @@ var q5Answer3 = document.createElement("button");
 var q5Answer4 = document.createElement("button");
 
 var form = document.createElement("FORM");
-
-//var highScoreTitle = document.createElement("h2");
-
-//listEl goes directly to the Ordered list, 
-//should be able to create an element in the list by id
-
-
 
 
 // when you click the button the quiz starts
@@ -442,9 +423,7 @@ var endQuiz = function(){
     finalScoreEl.textContent = "Your final score is " + timeLeft;
     formEl.style.display = 'flex';
     validateForm();
-  
     answerResponse();
-   
 };
 var inputInitials= document.getElementById("initials");
 var validateForm = function() {
@@ -456,8 +435,6 @@ var validateForm = function() {
   };
   
 
-//var dataInput = document.getElementById("initials");
-//localStorage.setItem("initials", dataInput.value);
 var scores = [];
 var storeScores = document.getElementById('score-button');
 
@@ -467,53 +444,7 @@ storeScores.addEventListener('click', function(){
     localStorage.setItem("initials", JSON.stringify(finalScore));
     scores.push(finalScore);
     
-});
-
-var saveScores = function(){
-    
-
-    // Put the object into storage
-    localStorage.setItem('scores', JSON.stringify(scores));
-    
-    // Retrieve the object from storage
-    var retrievedObject = localStorage.getItem('scores');
-
-    console.log('retrievedObject: ', JSON.parse(retrievedObject));
-    
-};        
-
-  /*
-var initialInput = document.querySelector("input[name='fname']").value;
-var dataInput = document.querySelector("#initials").value;
-var input = document.getElementsByTagName('input').value;
-var scoreButton = document.getElementById('score-button');
-scoreButton.addEventListener('click', function(){
-
-    var userObj = {
-        initials: initialInput,
-        score: timeLeft
-    };
-
-    localStorage.setItem("userObj", JSON.stringify(userObj));
-});*/
-
-
-
-
-
-
-    
-    // set new submission to local storage 
-   // localStorage.setItem("scores", JSON.stringify(scores));
-   // console.log(scores);
-    
- 
-
-
-
-//start new
-
-//End new  
+});  
 
 //display if the question is answered correctly or not
 var rightOrWrongEl = document.createElement("h3");
@@ -529,68 +460,3 @@ var answerResponse = function(){
         document.body.appendChild(rightOrWrongEl);
     }    
 };
-
-//WHAT I WANT TO DO
-  
-  
-    
-    
-    //for loop though the array and print to the high score page
-    //click on the clear all button and clear the high scores(delete array)
-
-  
-
-    
-
-
-
-
-  /*
-  //get high score
-  var getHighScore = function() {
-    var highScore = localStorage.getItem("user");
-    var listItemEl = document.createElement("li");
-    listItemEl.className = "list";
-    listItemEl.textContent = highScore;
-    listItemEl.appendChild(taskInfoEl);
-  
-  
-   
-  
-  
-  
-    // save tasks to localStorage
-   
-  
-    
-  };
-  
-  
-//Working on getting initials and putting them on screen
-    
-    
-    var user = {
-        name: initialInput,
-        score: timeLeft
-    };
-  
-    createHighScore(taskDataObj);
-    
-  };
-  var createHighScore = function(taskDataObj) {
-    var listItemEl = document.createElement("li");
-    listItemEl.className = "list";
-    listItemEl.appendChild(taskInfoEl);
-  
-  
-   
-  
-    tasks.push(taskDataObj);
-  
-    // save tasks to localStorage
-    saveTasks();
-  
-    
-  };
-  var taskDataObj=[];
-  */
