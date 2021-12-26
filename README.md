@@ -11,7 +11,7 @@ A website timed quiz of Javascript proficiency
 ## Screenshot
 Here is a screenshot of the completed site:
 
-![timed Javascript quiz screenshot](/assets/images/quiz-screenshot.JPEG)
+![timed Javascript quiz screenshot](/assets/images/Quiz.png)
 
 ## Link
 Link to my portfolio of work:
