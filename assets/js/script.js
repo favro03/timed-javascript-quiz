@@ -10,7 +10,8 @@ var infoEl = document.querySelector("#intro");
 var startQuizEl = document.querySelector('#start-quiz');
 var timerEl = document.getElementById('time');
 
-var listItemEl = document.getElementById('list');
+
+
 var input = document.getElementById('score-button');
 var userInput = document.getElementById('initials');
 
@@ -458,14 +459,29 @@ var validateForm = function() {
 //var dataInput = document.getElementById("initials");
 //localStorage.setItem("initials", dataInput.value);
 var scores = [];
-var store = document.getElementById('score-button');
-store.addEventListener('click', function(){
+var storeScores = document.getElementById('score-button');
+
+storeScores.addEventListener('click', function(){
     var inputInitials= document.getElementById("initials");
-    localStorage.setItem("initials", inputInitials.value + "-" + timeLeft);
-    scores.pop();
-    scores.push(localStorage);
-    console.log(scores);
+    var finalScore = inputInitials.value + "-" +timeLeft;
+    localStorage.setItem("initials", JSON.stringify(finalScore));
+    scores.push(finalScore);
+    
 });
+
+var saveScores = function(){
+    
+
+    // Put the object into storage
+    localStorage.setItem('scores', JSON.stringify(scores));
+    
+    // Retrieve the object from storage
+    var retrievedObject = localStorage.getItem('scores');
+
+    console.log('retrievedObject: ', JSON.parse(retrievedObject));
+    
+};        
+
   /*
 var initialInput = document.querySelector("input[name='fname']").value;
 var dataInput = document.querySelector("#initials").value;
@@ -518,25 +534,12 @@ var answerResponse = function(){
   
   
     
-    //initial object is saved to a array
-    //the array is stored in local storage
-    //get the array from local storage
+    
     //for loop though the array and print to the high score page
     //click on the clear all button and clear the high scores(delete array)
 
   
-var saveScores = function(){
-    
 
-    // Put the object into storage
-    localStorage.setItem('scores', JSON.stringify(scores));
-    
-    // Retrieve the object from storage
-    var retrievedObject = localStorage.getItem('scores');
-
-    console.log('retrievedObject: ', JSON.parse(retrievedObject));
-    
-};        
     
 
 
